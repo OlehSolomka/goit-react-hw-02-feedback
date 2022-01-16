@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
 import Statistic from "./Statistic/Statistic";
 import Section from "./Section/Section";
+import Notification from "./Notification/Notification";
 
 class Feedback extends Component {
   static defaultProps = {
@@ -52,15 +53,19 @@ class Feedback extends Component {
             onBadIncr={this.handlerBadIncr}
           />
         </Section>
-        <Section title={"Statistic"}>
-          <Statistic
-            good={good}
-            bad={bad}
-            neutral={neutral}
-            total={this.totalFeedback}
-            positivePersentage={this.positivePersentage}
-          />
-        </Section>
+        {this.totalFeedback ? (
+          <Section title={"Statistic"}>
+            <Statistic
+              good={good}
+              bad={bad}
+              neutral={neutral}
+              total={this.totalFeedback}
+              positivePersentage={this.positivePersentage}
+            />
+          </Section>
+        ) : (
+          <Notification message={"There is no feedback"} />
+        )}
       </div>
     );
   }
