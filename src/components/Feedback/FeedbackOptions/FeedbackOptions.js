@@ -1,13 +1,13 @@
-const FeedbackOptions = ({ onGoodIncr, onBadIncr, onNeutralIncr }) => {
+const FeedbackOptions = ({ onLeaveFeedback }) => {
   return (
     <div>
-      <button type="button" onClick={onGoodIncr}>
+      <button type="button" onClick={() => onLeaveFeedback("good")}>
         Good
       </button>
-      <button type="button" onClick={onBadIncr}>
+      <button type="button" onClick={() => onLeaveFeedback("neutral")}>
         Neutral
       </button>
-      <button type="button" onClick={onNeutralIncr}>
+      <button type="button" onClick={() => onLeaveFeedback("bad")}>
         Bad
       </button>
     </div>

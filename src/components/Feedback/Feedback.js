@@ -22,16 +22,10 @@ class Feedback extends Component {
     bad: this.props.defaultBad,
   };
 
-  handlerGoodIncr = () => {
-    this.setState((prevState) => ({ good: prevState.good + 1 }));
-  };
-  handlerNeutralIncr = () => {
-    this.setState((prevState) => ({ neutral: prevState.neutral + 1 }));
+  leaveFeedback = (target) => {
+    this.setState((prevState) => ({ [target]: prevState[target] + 1 }));
   };
 
-  handlerBadIncr = () => {
-    this.setState((prevState) => ({ bad: prevState.bad + 1 }));
-  };
   countTotalFeedback = () => {
     this.totalFeedback = this.state.bad + this.state.neutral + this.state.good;
   };
@@ -47,11 +41,7 @@ class Feedback extends Component {
     return (
       <div>
         <Section title={"Please leave Feedback"}>
-          <FeedbackOptions
-            onGoodIncr={this.handlerGoodIncr}
-            onNeutralIncr={this.handlerNeutralIncr}
-            onBadIncr={this.handlerBadIncr}
-          />
+          <FeedbackOptions onLeaveFeedback={this.leaveFeedback} />
         </Section>
         {this.totalFeedback ? (
           <Section title={"Statistic"}>
